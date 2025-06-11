@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Lista de Estudiantes</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: #f7f9fb;
+            padding: 20px;
+        }
+        h1 {
+            color: #2c3e50;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #fff;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        th, td {
+            padding: 15px;
+            text-align: left;
+        }
+        th {
+            background: #3498db;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background: #f2f2f2;
+        }
+        ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+    </style>
+</head>
+<body>
+<h1>👨‍🎓 Lista de Estudiantes</h1>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Cursos</th>
+    </tr>
+    <tr th:each="estudiante : ${estudiantes}">
+        <td th:text="${estudiante.id}"></td>
+        <td th:text="${estudiante.nombre}"></td>
+        <td>
+            <ul>
+                <li th:each="curso : ${estudiante.cursos}" th:text="${curso.nombre}"></li>
+            </ul>
+        </td>
+    </tr>
+</table>
+</body>
+</html>
